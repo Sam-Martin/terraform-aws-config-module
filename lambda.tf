@@ -13,4 +13,5 @@ resource "aws_lambda_permission" "allow_aws_config" {
     action = "lambda:InvokeFunction"
     function_name = "${replace(lookup(var.customrules, count.index),"/\\.\\w*$/","")}"
     principal = "config.amazonaws.com"
+    depends_on = [ "aws_lambda_function.configruleslambda"]
 }
