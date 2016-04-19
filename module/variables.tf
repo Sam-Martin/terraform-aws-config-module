@@ -1,9 +1,27 @@
+
+variable "lambda_language_map" {
+  type = "map"
+  default = {
+    "python2.7" = ".py"
+    "nodejs" = ".js"
+  }
+}
+
+variable "zip_folder" {
+  default = "temp/"
+}
+
 variable "num_custom_rules" {
   default = 3
 }
 
 variable "custom_rules" {
-    default = "cloudtrail_enabled_all_regions-periodic.zip,iam_mfa_require_root-periodic.zip,iam_password_minimum_length-periodic.zip"
+    default = <<EOF
+  cloudtrail_enabled_all_regions-periodic,
+  iam_mfa_require_root-periodic,
+  iam_password_minimum_length-periodic,
+  ec2-exposed-instance
+EOF
 }
 
 
