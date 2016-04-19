@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "config_rules_lambda" {
     count = "${var.num_custom_rules}"
     filename = "${element(replace(split(\",\",var.custom_rules), "/[\\r\\n]+/",""), count.index)}"
-    function_name = "aws-config-rule-${replace(element(split(\",\",var.custom_rules), count.index),"/(\\zip$|.*\\/|\\W+)/","")}"
+    function_name = "aws-config-rule-${replace(element(split(\",\",var.custom_rules), count.index),"/(\\.zip|.*\\/|\\W+)/","")}"
     role = "${aws_iam_role.iam_for_lambda.arn}"
     handler = "exports.test"
     runtime = "${element(split(\",\",var.custom_rule_languages), count.index)}"
