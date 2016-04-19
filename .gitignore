@@ -2,3 +2,5 @@
 *.tfstate.backup
 *.log
 *.zip
+.terraform
+temp

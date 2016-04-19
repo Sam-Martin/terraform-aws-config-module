@@ -3,39 +3,20 @@ variable "numcustomrules" {
 }
 
 variable "customrules" {
-    type = "map"
-
-    default = {
-      "0" = "cloudtrail_enabled_all_regions-periodic.zip"
-      "1" = "iam_mfa_require_root-periodic.zip"
-      "2" = "iam_password_minimum_length-periodic.zip"
-    }
+    default = "cloudtrail_enabled_all_regions-periodic.zip,iam_mfa_require_root-periodic.zip,iam_password_minimum_length-periodic.zip"
 }
 
 
 variable "customrulelanguages" {
-    type = "map"
-
-    default = {
-      "0" = "js"
-      "1" = "js"
-      "2" = "js"
-    }
+    default ="js,js,js"
 }
 
 variable "customruleinputparameters" {
-    type = "map"
-
-    default = {
-      "0" = ""
-      "1" = ""
-      "2" = <<EOF
-,"InputParameters":
-  {
+    default = <<EOF
+,,{
      "MinimumPasswordLength": "8"
   }
 EOF
-  }
 }
 
 variable "delivery_channel_s3_bucket_name" {

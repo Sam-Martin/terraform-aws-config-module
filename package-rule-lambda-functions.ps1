@@ -14,19 +14,23 @@ $CustomRules = @(
     @{lang="js";uri="https://raw.githubusercontent.com/awslabs/aws-config-rules/master/node/iam_password_minimum_length-periodic.js"}
 )
 
+# Prepare directory
+$CurFolder = Split-Path -parent $PSCommandPath
+$TempRoot = "$CurFolder\temp"
+New-Item $TempRoot -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
+
 # Loop through the custom rules to download and package them
 foreach($CustomRule in $CustomRules){
     
     $FileName = Split-Path $CustomRule.uri -Leaf
     $ZipName = $FileName -replace '\.\w*$',".zip"
-    $CurFolder = Split-Path -parent $PSCommandPath
-    $TempFolder = "$env:TEMP\$FileName\"
+    $TempFolder = "$TempRoot\$FileName\"
 
     # Cleanup & Prepare
     New-Item $TempFolder -ItemType Directory -ErrorAction SilentlyContinue | out-null
-    Remove-Item "$CurFolder\$ZipName" -Force -ErrorAction SilentlyContinue
+    Remove-Item "$TempRoot\$ZipName" -Force -ErrorAction SilentlyContinue
 
     # Download & Zip
     Invoke-WebRequest -Uri $CustomRule.uri -OutFile "$TempFolder\$FileName"
-    Compress-ToZip -zipfilename "$CurFolder\$ZipName" -sourcedir $TempFolder
+    Compress-ToZip -zipfilename "$TempRoot\$ZipName" -sourcedir $TempFolder
 }

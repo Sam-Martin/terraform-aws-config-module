@@ -11,8 +11,10 @@
             "EventSource": "aws.config",
             "MessageType": "ConfigurationSnapshotDeliveryCompleted"
           }]
+        },
+        "InputParameters": {
+          ${parameters}
         }
-        ${parameters}
       }
     }
   }
