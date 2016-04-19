@@ -2,10 +2,11 @@
 variable "lambda_language_map" {
   type = "map"
   default = {
-    "python2.7" = ".py"
-    "nodejs" = ".js"
+    "python2.7" = "lambda_handler"
+    "nodejs" = "handler"
   }
 }
+
 
 variable "zip_folder" {
   default = "temp/"

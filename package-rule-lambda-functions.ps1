@@ -1,11 +1,4 @@
-﻿function Compress-ToZip
-{
-    param( $zipfilename, $sourcedir )
-    Add-Type -Assembly System.IO.Compression.FileSystem 
-    $compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
-    [System.IO.Compression.ZipFile]::CreateFromDirectory($sourcedir,
-        $zipfilename, $compressionLevel, $true) 
-}
+﻿#Requires -Version 5
 
 # Define the custom rules
 $CustomRules = @(
@@ -25,13 +18,11 @@ foreach($CustomRule in $CustomRules){
     
     $FileName = Split-Path $CustomRule.uri -Leaf
     $ZipName = $FileName -replace '\.\w*$',".zip"
-    $TempFolder = "$TempRoot\$FileName\"
 
-    # Cleanup & Prepare
-    New-Item $TempFolder -ItemType Directory -ErrorAction SilentlyContinue | out-null
+    # Cleanup 
     Remove-Item "$TempRoot\$ZipName" -Force -ErrorAction SilentlyContinue
 
     # Download & Zip
-    Invoke-WebRequest -Uri $CustomRule.uri -OutFile "$TempFolder\$FileName"
-    Compress-ToZip -zipfilename "$TempRoot\$ZipName" -sourcedir $TempFolder
+    Invoke-WebRequest -Uri $CustomRule.uri -OutFile "$TempRoot\$FileName"
+    Compress-Archive  -DestinationPath "$TempRoot\$ZipName" -Path "$TempRoot\$FileName"
 }
