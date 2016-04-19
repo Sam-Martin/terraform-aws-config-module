@@ -1,20 +1,5 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Metadata": {
-    "AWS::CloudFormation::Designer": {
-      "0d3a4d9c-fa63-411e-8d04-87cb6b44690b": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": 579,
-          "y": 210
-        },
-        "z": 0
-      }
-    }
-  },
   "Resources": {
     "CloudTrailEnabled": {
       "Type": "AWS::Config::ConfigRule",

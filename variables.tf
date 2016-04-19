@@ -37,3 +37,8 @@ variable "customruleinputparameters" {
 EOF
   }
 }
+
+variable "delivery_channel_s3_bucket_name" {
+  type = "string"
+  default = "bucketofwater"
+}

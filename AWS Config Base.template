@@ -1,169 +1,5 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Metadata": {
-    "AWS::CloudFormation::Designer": {
-      "2fae6a7c-8deb-409f-80e9-656c9c2af97e": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": -270,
-          "y": 20
-        },
-        "z": 1,
-        "embeds": [],
-        "isrelatedto": [
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e"
-        ]
-      },
-      "e8b213de-9036-40e2-a840-c56b06d9b1bc": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": 290,
-          "y": 150
-        },
-        "z": 1,
-        "embeds": [],
-        "dependson": [
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e",
-          "3e3ce7aa-4c28-49ce-9b4f-5364e7990624"
-        ],
-        "isrelatedto": [
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e",
-          "979098a4-a628-4395-9ac7-f43e1bfaa5ae"
-        ]
-      },
-      "26a623f6-ca27-4851-bd71-577d56bd9a95": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": 410,
-          "y": 150
-        },
-        "z": 1,
-        "embeds": [],
-        "dependson": [
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e",
-          "e8b213de-9036-40e2-a840-c56b06d9b1bc"
-        ]
-      },
-      "3e3ce7aa-4c28-49ce-9b4f-5364e7990624": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": 160,
-          "y": 150
-        },
-        "z": 1,
-        "embeds": [],
-        "dependson": [
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e",
-          "979098a4-a628-4395-9ac7-f43e1bfaa5ae"
-        ]
-      },
-      "35068c5c-09da-458a-81d6-500395ea7292": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": -270,
-          "y": 150
-        },
-        "z": 1,
-        "embeds": [],
-        "isrelatedto": [
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e"
-        ]
-      },
-      "c75421bc-df03-4964-87b7-b848690b1a7c": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": -140,
-          "y": 160
-        },
-        "z": 1,
-        "embeds": [],
-        "isrelatedto": [
-          "35068c5c-09da-458a-81d6-500395ea7292"
-        ]
-      },
-      "979098a4-a628-4395-9ac7-f43e1bfaa5ae": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": 20,
-          "y": 150
-        },
-        "z": 1,
-        "embeds": [],
-        "isrelatedto": [
-          "c75421bc-df03-4964-87b7-b848690b1a7c",
-          "2fae6a7c-8deb-409f-80e9-656c9c2af97e"
-        ]
-      },
-      "ed297316-819b-40fe-822a-b77b87dc4a85": {
-        "source": {
-          "id": "3e3ce7aa-4c28-49ce-9b4f-5364e7990624",
-          "selector": "g:nth-child(1) g:nth-child(4) g:nth-child(2) circle:nth-child(1)     ",
-          "port": "AWS::DependencyLink-*"
-        },
-        "target": {
-          "x": 150,
-          "y": 180
-        },
-        "z": 13
-      },
-      "d62b14a1-5b06-48cc-8832-2cc84985138b": {
-        "source": {
-          "id": "c75421bc-df03-4964-87b7-b848690b1a7c",
-          "selector": "g:nth-child(1) g:nth-child(4) g:nth-child(1) circle:nth-child(1)     ",
-          "port": "AWS::DependencyLink-*"
-        },
-        "target": {
-          "x": 20,
-          "y": 290
-        },
-        "z": 14
-      },
-      "636d3456-9de3-46ed-bb70-99e84079aa64": {
-        "size": {
-          "width": 60,
-          "height": 60
-        },
-        "position": {
-          "x": 420,
-          "y": 150
-        },
-        "z": 0,
-        "dependson": [
-          "e8b213de-9036-40e2-a840-c56b06d9b1bc"
-        ]
-      },
-      "a7ec74fb-7746-4bf9-9fad-5c377ad4576b": {
-        "source": {
-          "id": "636d3456-9de3-46ed-bb70-99e84079aa64"
-        },
-        "target": {
-          "id": "e8b213de-9036-40e2-a840-c56b06d9b1bc"
-        },
-        "z": 2
-      }
-    }
-  },
   "Resources": {
     "LambdaExecutionRole": {
       "Type": "AWS::IAM::Role",
@@ -197,14 +33,7 @@
                   "Action": [
                     "iam:PassRole"
                   ],
-                  "Resource": [
-                    {
-                      "Fn::GetAtt": [
-                        "AWSConfigRole",
-                        "Arn"
-                      ]
-                    }
-                  ]
+                  "Resource": "${aws_config_role_arn}"
                 },
                 {
                   "Effect": "Allow",
@@ -338,12 +167,7 @@
             "Arn"
           ]
         },
-        "RoleARN": {
-          "Fn::GetAtt": [
-            "AWSConfigRole",
-            "Arn"
-          ]
-        }
+        "RoleARN": "${aws_config_role_arn}"
       },
       "Metadata": {
         "AWS::CloudFormation::Designer": {
@@ -351,115 +175,7 @@
         }
       }
     },
-    "AWSConfigRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "config.amazonaws.com"
-                ]
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ]
-            }
-          ]
-        },
-        "ManagedPolicyArns": [
-          "arn:aws:iam::aws:policy/service-role/AWSConfigRole"
-        ],
-        "Policies": [
-          {
-            "PolicyName": {
-              "Fn::Join": [
-                "",
-                [
-                  "AWSConfigDeliveryPermissions-",
-                  {
-                    "Ref": "AWS::Region"
-                  }
-                ]
-              ]
-            },
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Sid": "Stmt1460390265000",
-                  "Effect": "Allow",
-                  "Action": [
-                    "config:Put*"
-                  ],
-                  "Resource": [
-                    "*"
-                  ]
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                    "s3:PutObject*"
-                  ],
-                  "Resource": [
-                    {
-                      "Fn::Join": [
-                        "",
-                        [
-                          "arn:aws:s3:::",
-                          {
-                            "Ref": "DeliveryChannelS3Bucket"
-                          },
-                          "/",
-                          {
-                            "Ref": "DeliveryChannelS3Prefix"
-                          },
-                          "/AWSLogs/*"
-                        ]
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                    "s3:GetBucketAcl"
-                  ],
-                  "Resource": {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:s3:::",
-                        {
-                          "Ref": "DeliveryChannelS3Bucket"
-                        }
-                      ]
-                    ]
-                  }
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                      "lambda:InvokeFunction"
-                  ],
-                  "Resource": [
-                      "*"
-                  ]
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "2fae6a7c-8deb-409f-80e9-656c9c2af97e"
-        }
-      }
-    },
+
     "ConfigurationRecorder": {
       "Type": "AWS::Config::ConfigurationRecorder",
       "Properties": {
@@ -473,12 +189,7 @@
           "AllSupported": true,
           "IncludeGlobalResourceTypes": true
         },
-        "RoleARN": {
-          "Fn::GetAtt": [
-            "AWSConfigRole",
-            "Arn"
-          ]
-        }
+        "RoleARN":"${aws_config_role_arn}"
       },
       "Metadata": {
         "AWS::CloudFormation::Designer": {
@@ -486,7 +197,6 @@
         }
       },
       "DependsOn": [
-        "AWSConfigRole",
         "DeliveryChannel"
       ]
     },
@@ -507,7 +217,6 @@
         }
       },
       "DependsOn": [
-        "AWSConfigRole",
         "ConfigurationRecorderSanitisationResults"
       ]
     }
