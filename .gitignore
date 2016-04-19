@@ -1,2 +1,4 @@
 *.tfstate
 *.tfstate.backup
+*.log
+*.zip

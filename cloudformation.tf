@@ -25,31 +25,3 @@ resource "aws_cloudformation_stack" "awsconfgrules" {
   capabilities = ["CAPABILITY_IAM"]
   depends_on = ["aws_cloudformation_stack.awsconfig"]
 }
-
-resource "aws_iam_role" "iam_for_lambda" {
-    name = "iam_for_lambda"
-    assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_lambda_function" "test_lambda" {
-    count = "${var.numcustomrules}"
-    filename = "${lookup(var.customrules, count.index)}"
-    function_name = "${concat("terraform-generated-rule", count.index)}"
-    role = "${aws_iam_role.iam_for_lambda.arn}"
-    handler = "exports.test"
-    source_code_hash = "${base64sha256(file("${lookup(var.customrules, count.index)}"))}"
-}
