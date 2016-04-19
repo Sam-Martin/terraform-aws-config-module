@@ -1,5 +1,5 @@
 variable "num_custom_rules" {
-  default = 2
+  default = 3
 }
 
 variable "custom_rules" {
@@ -8,12 +8,12 @@ variable "custom_rules" {
 
 
 variable "custom_rule_languages" {
-    default ="js,js,js"
+    default ="nodejs,nodejs,nodejs"
 }
 
 variable "custom_rule_input_parameters" {
     default = <<EOF
-,,{
+"","",{
      "MinimumPasswordLength": "8"
   }
 EOF

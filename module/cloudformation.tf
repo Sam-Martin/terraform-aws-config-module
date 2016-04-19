@@ -30,7 +30,6 @@ resource "template_file" "aws_config_rules_template" {
     }
 }
 
-
 resource "aws_cloudformation_stack" "aws_config_rules" {
   count = "${var.num_custom_rules}"
   name = "aws-config-custom-rule-${replace(element(split(\",\",var.custom_rules), count.index),"/([^a-zA-Z][^-a-zA-Z0-9]*|\\.\\w*$|.*\\/)/","")}"

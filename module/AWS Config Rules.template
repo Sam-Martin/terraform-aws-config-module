@@ -12,9 +12,8 @@
             "MessageType": "ConfigurationSnapshotDeliveryCompleted"
           }]
         },
-        "InputParameters": {
-          ${parameters}
-        }
+        "InputParameters":  ${parameters}
+
       }
     }
   }
