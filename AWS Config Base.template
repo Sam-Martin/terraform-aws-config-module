@@ -61,11 +61,6 @@
             }
           }
         ]
-      },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "35068c5c-09da-458a-81d6-500395ea7292"
-        }
       }
     },
     "ConfigurationRecorderSanitiser": {
@@ -151,11 +146,6 @@
             "Arn"
           ]
         }
-      },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "c75421bc-df03-4964-87b7-b848690b1a7c"
-        }
       }
     },
     "ConfigurationRecorderSanitisationResults": {
@@ -168,11 +158,6 @@
           ]
         },
         "RoleARN": "${aws_config_role_arn}"
-      },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "979098a4-a628-4395-9ac7-f43e1bfaa5ae"
-        }
       }
     },
 
@@ -191,11 +176,6 @@
         },
         "RoleARN":"${aws_config_role_arn}"
       },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "e8b213de-9036-40e2-a840-c56b06d9b1bc"
-        }
-      },
       "DependsOn": [
         "DeliveryChannel"
       ]
@@ -204,31 +184,12 @@
       "Type": "AWS::Config::DeliveryChannel",
       "Properties": {
         "Name": "default",
-        "S3BucketName": {
-          "Ref": "DeliveryChannelS3Bucket"
-        },
-        "S3KeyPrefix": {
-          "Ref": "DeliveryChannelS3Prefix"
-        }
-      },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "3e3ce7aa-4c28-49ce-9b4f-5364e7990624"
-        }
+        "S3BucketName": "${delivery_channel_s3_bucket_name}",
+        "S3KeyPrefix": "${delivery_channel_s3_bucket_prefix}"
       },
       "DependsOn": [
         "ConfigurationRecorderSanitisationResults"
       ]
-    }
-  },
-  "Parameters": {
-    "DeliveryChannelS3Bucket": {
-      "Type": "String",
-      "Description": "The full ARN of the bucket to which you wish to periodically push config snapshots."
-    },
-    "DeliveryChannelS3Prefix": {
-      "Type": "String",
-      "Description": "The key prefix ('folder') into which to insert config snapshots"
     }
   }
 }

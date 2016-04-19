@@ -32,6 +32,28 @@ resource "aws_iam_role_policy" "iam_role_policy_for_lambda" {
         "logs:PutLogEvents"
       ],
       "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "config:DeleteDeliveryChannel",
+        "config:DescribeConfigurationRecorders",
+        "config:DescribeDeliveryChannels",
+        "config:PutConfigurationRecorder",
+        "config:StopConfigurationRecorder"
+      ],
+      "Resource": [
+        "*"
+      ]
     }
   ]
 }

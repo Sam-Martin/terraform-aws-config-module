@@ -10,16 +10,14 @@ resource "template_file" "awsconfigtemplate" {
   template = "${file("AWS Config Base.template")}"
   vars {
     	aws_config_role_arn = "${aws_iam_role.aws_config_role.arn}"
+      delivery_channel_s3_bucket_name = "${var.delivery_channel_s3_bucket_name}"
+      delivery_channel_s3_bucket_prefix = "${var.delivery_channel_s3_bucket_prefix}"
     }
 }
 
 resource "aws_cloudformation_stack" "awsconfig" {
   name = "aws-config-base"
   template_body = "${template_file.awsconfigtemplate.rendered}"
-  parameters = {
-    DeliveryChannelS3Bucket = "${var.delivery_channel_s3_bucket_name}"
-    DeliveryChannelS3Prefix = "mykeyprefix"
-  }
   capabilities = ["CAPABILITY_IAM"]
 }
 

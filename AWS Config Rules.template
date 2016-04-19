@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": {
-    "CloudTrailEnabled": {
+    "CustomConfigRule": {
       "Type": "AWS::Config::ConfigRule",
       "Properties": {
         "Source": {
@@ -13,11 +13,6 @@
           }]
         }
         ${parameters}
-      },
-      "Metadata": {
-        "AWS::CloudFormation::Designer": {
-          "id": "26a623f6-ca27-4851-bd71-577d56bd9a95"
-        }
       }
     }
   }
