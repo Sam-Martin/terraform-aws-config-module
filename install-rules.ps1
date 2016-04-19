@@ -11,6 +11,7 @@
 $CustomRules = @(
     @{lang="js";uri="https://raw.githubusercontent.com/awslabs/aws-config-rules/master/node/cloudtrail_enabled_all_regions-periodic.js"},
     @{lang="js";uri="https://raw.githubusercontent.com/awslabs/aws-config-rules/master/node/iam_mfa_require_root-periodic.js"}
+    @{lang="js";uri="https://raw.githubusercontent.com/awslabs/aws-config-rules/master/node/iam_password_minimum_length-periodic.js"}
 )
 
 # Loop through the custom rules to download and package them
@@ -22,7 +23,7 @@ foreach($CustomRule in $CustomRules){
     $TempFolder = "$env:TEMP\$FileName\"
 
     # Cleanup & Prepare
-    New-Item $TempFolder -ItemType Directory -ErrorAction SilentlyContinue
+    New-Item $TempFolder -ItemType Directory -ErrorAction SilentlyContinue | out-null
     Remove-Item "$CurFolder\$ZipName" -Force -ErrorAction SilentlyContinue
 
     # Download & Zip
