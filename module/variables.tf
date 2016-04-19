@@ -1,17 +1,17 @@
-variable "numcustomrules" {
+variable "num_custom_rules" {
   default = 2
 }
 
-variable "customrules" {
+variable "custom_rules" {
     default = "cloudtrail_enabled_all_regions-periodic.zip,iam_mfa_require_root-periodic.zip,iam_password_minimum_length-periodic.zip"
 }
 
 
-variable "customrulelanguages" {
+variable "custom_rule_languages" {
     default ="js,js,js"
 }
 
-variable "customruleinputparameters" {
+variable "custom_rule_input_parameters" {
     default = <<EOF
 ,,{
      "MinimumPasswordLength": "8"

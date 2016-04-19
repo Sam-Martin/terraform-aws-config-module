@@ -1,9 +1,9 @@
-module "my_web_elb" {
+module "aws_config_rules" {
   source = "module"
-  customrules = "temp/cloudtrail_enabled_all_regions-periodic.zip,temp/iam_mfa_require_root-periodic.zip,temp/iam_password_minimum_length-periodic.zip"
-  customrulelanguages = "js,js,js"
+  custom_rules = "temp/cloudtrail_enabled_all_regions-periodic.zip,temp/iam_mfa_require_root-periodic.zip,temp/iam_password_minimum_length-periodic.zip"
+  custom_rule_languages = "js,js,js"
 
-  customruleinputparameters = <<EOF
+  custom_rule_input_parameters = <<EOF
 ,,{
    "MinimumPasswordLength": "8"
 }
