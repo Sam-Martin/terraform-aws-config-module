@@ -12,8 +12,8 @@
             "MessageType": "${message_type}"
           }]
         },
-        "InputParameters":  ${parameters}
-
+        "InputParameters":  ${parameters},
+        "Scope": ${scope}
       }
     }
   }

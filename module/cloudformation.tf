@@ -28,6 +28,7 @@ resource "template_file" "aws_config_rules_template" {
     	parameters = "${element(split(\";\",var.custom_rule_input_parameters),count.index)}"
       lambda_arn = "${element(aws_lambda_function.config_rules_lambda.*.arn, count.index)}"
       message_type = "${element(replace(split(\",\",var.custom_rule_message_types), "/[\\r\\n]+/",""),count.index)}"
+      scope = "${element(split(\";\",var.custom_rule_scope),count.index)}"
     }
 }
 

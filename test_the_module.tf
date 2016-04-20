@@ -29,4 +29,13 @@ ConfigurationSnapshotDeliveryCompleted,
 ConfigurationSnapshotDeliveryCompleted,
 ConfigurationItemChangeNotification
 EOF
+
+  custom_rule_scope = <<EOF
+{};{};{};
+{
+"ComplianceResourceTypes": [
+    "AWS::EC2::SecurityGroup"
+  ]
+}
+EOF
 }

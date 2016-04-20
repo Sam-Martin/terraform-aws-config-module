@@ -20,8 +20,7 @@ variable "custom_rules" {
     default = <<EOF
   cloudtrail_enabled_all_regions-periodic,
   iam_mfa_require_root-periodic,
-  iam_password_minimum_length-periodic,
-  ec2-exposed-instance
+  iam_password_minimum_length-periodic
 EOF
 }
 
@@ -32,7 +31,7 @@ variable "custom_rule_languages" {
 
 variable "custom_rule_input_parameters" {
     default = <<EOF
-"","",{
+"";"";{
      "MinimumPasswordLength": "8"
   }
 EOF
@@ -44,6 +43,12 @@ ConfigurationSnapshotDeliveryCompleted,
 ConfigurationSnapshotDeliveryCompleted,
 ConfigurationSnapshotDeliveryCompleted,
 ConfigurationItemChangeNotification
+EOF
+}
+
+variable "custom_rule_scope" {
+    default = <<EOF
+{};{};{}
 EOF
 }
 
