@@ -38,6 +38,15 @@ variable "custom_rule_input_parameters" {
 EOF
 }
 
+variable "custom_rule_message_types" {
+  default = <<EOF
+ConfigurationSnapshotDeliveryCompleted,
+ConfigurationSnapshotDeliveryCompleted,
+ConfigurationSnapshotDeliveryCompleted,
+ConfigurationItemChangeNotification
+EOF
+}
+
 variable "delivery_channel_s3_bucket_name" {
   type = "string"
   default = "bucketofwater"

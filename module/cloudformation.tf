@@ -25,8 +25,9 @@ resource "template_file" "aws_config_rules_template" {
   count = "${var.num_custom_rules}"
   template = "${file("${path.module}/AWS Config Rules.template")}"
   vars {
-    	parameters = "${element(split(\",\",var.custom_rule_input_parameters),count.index)}"
+    	parameters = "${element(split(\";\",var.custom_rule_input_parameters),count.index)}"
       lambda_arn = "${element(aws_lambda_function.config_rules_lambda.*.arn, count.index)}"
+      message_type = "${element(replace(split(\",\",var.custom_rule_message_types), "/[\\r\\n]+/",""),count.index)}"
     }
 }
 

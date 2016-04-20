@@ -9,7 +9,7 @@
           "SourceIdentifier": "${lambda_arn}",
           "SourceDetails": [{
             "EventSource": "aws.config",
-            "MessageType": "ConfigurationSnapshotDeliveryCompleted"
+            "MessageType": "${message_type}"
           }]
         },
         "InputParameters":  ${parameters}
