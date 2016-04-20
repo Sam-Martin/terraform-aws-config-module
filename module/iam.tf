@@ -25,6 +25,16 @@ resource "aws_iam_role_policy" "iam_role_policy_for_lambda" {
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "Stmt1460390265000",
+      "Effect": "Allow",
+      "Action": [
+        "config:Put*"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
       "Effect": "Allow",
       "Action": [
         "logs:CreateLogGroup",
