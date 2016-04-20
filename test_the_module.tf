@@ -17,6 +17,6 @@ EOF
 },{}
 EOF
 
-  delivery_channel_s3_bucket_name = "bucketofwater"
+  delivery_channel_s3_bucket_name = "awsconfigtestbucket"
   delivery_channel_s3_bucket_prefix = "logs"
 }

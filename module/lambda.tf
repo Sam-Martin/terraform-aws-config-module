@@ -5,6 +5,7 @@ resource "aws_lambda_function" "config_rules_lambda" {
     role = "${aws_iam_role.iam_for_lambda.arn}"
     handler = "${element(replace(split(\",\",var.custom_rules), "/[\\r\\n]+/",""), count.index)}.${lookup(var.lambda_language_map,element(split(\",\",var.custom_rule_languages), count.index))}"
     runtime = "${element(split(\",\",var.custom_rule_languages), count.index)}"
+    timeout = 300
     source_code_hash = "${base64sha256(file("${var.zip_folder}${element(replace(split(\",\",var.custom_rules), "/[\\r\\n]+/",""), count.index)}.zip"))}"
 }
 

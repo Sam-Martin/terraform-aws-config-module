@@ -1,5 +1,5 @@
 resource "aws_iam_role" "iam_for_lambda" {
-    name = "iam_for_lambda"
+    name = "lambda_custom_config_rules_executor"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -64,10 +64,25 @@ resource "aws_iam_role_policy" "iam_role_policy_for_lambda" {
       "Resource": [
         "*"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject*"
+      ],
+      "Resource": [
+       "arn:aws:s3:::${var.delivery_channel_s3_bucket_name}/*"
+      ]
     }
   ]
 }
 EOF
+}
+
+resource "aws_iam_policy_attachment" "iam_for_lambda" {
+  name = "lambda_custom_config_rules_executor"
+  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+  roles = ["${aws_iam_role.iam_for_lambda.name}", "${aws_iam_role.aws_config_role.name}"]
 }
 
 resource "aws_iam_role" "aws_config_role" {
