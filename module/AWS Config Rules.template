@@ -4,6 +4,7 @@
     "CustomConfigRule": {
       "Type": "AWS::Config::ConfigRule",
       "Properties": {
+        "ConfigRuleName": "${config_rule_name}",
         "Source": {
           "Owner": "CUSTOM_LAMBDA",
           "SourceIdentifier": "${lambda_arn}",

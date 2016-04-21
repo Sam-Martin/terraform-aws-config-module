@@ -34,7 +34,7 @@ EOF
 {};{};{};
 {
 "ComplianceResourceTypes": [
-    "AWS::EC2::SecurityGroup"
+    "AWS::EC2::Instance"
   ]
 }
 EOF

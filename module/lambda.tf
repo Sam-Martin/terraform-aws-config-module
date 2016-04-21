@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "config_rules_lambda" {
     count = "${var.num_custom_rules}"
     filename = "${var.zip_folder}${element(replace(split(\",\",var.custom_rules), "/[\\r\\n]+/",""), count.index)}.zip"
-    function_name = "aws-config-rule-${replace(element(split(\",\",var.custom_rules), count.index),"/[^a-zA-Z][^-a-zA-Z0-9]*/","")}"
+    function_name = "aws-config-rule-${replace(element(split(\",\",var.custom_rules), count.index),"/(^[^a-zA-Z]{1,1}|[^-a-zA-Z0-9_]+)/","")}"
     role = "${aws_iam_role.iam_for_lambda.arn}"
     handler = "${element(replace(split(\",\",var.custom_rules), "/[\\r\\n]+/",""), count.index)}.${lookup(var.lambda_language_map,element(split(\",\",var.custom_rule_languages), count.index))}"
     runtime = "${element(split(\",\",var.custom_rule_languages), count.index)}"
