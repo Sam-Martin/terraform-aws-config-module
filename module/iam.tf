@@ -1,5 +1,5 @@
 resource "aws_iam_role" "iam_for_lambda" {
-    name = "lambda_custom_config_rules_executor"
+      name = "${var.naming_prefix}-lambda-rules-executor-${var.region}"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -86,7 +86,7 @@ resource "aws_iam_policy_attachment" "iam_for_lambda" {
 }
 
 resource "aws_iam_role" "aws_config_role" {
-    name = "aws_config_role"
+    name = "${var.naming_prefix}-role-${var.region}"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",

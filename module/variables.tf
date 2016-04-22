@@ -1,3 +1,12 @@
+variable "region" {
+  type = "string"
+  default = "us-west-2"
+}
+
+variable "naming_prefix" {
+  type="string"
+  default = "aws-config"
+}
 
 variable "lambda_language_map" {
   type = "map"
@@ -6,7 +15,6 @@ variable "lambda_language_map" {
     "nodejs" = "handler"
   }
 }
-
 
 variable "zip_folder" {
   default = "temp/"
@@ -23,7 +31,6 @@ variable "custom_rules" {
   iam_password_minimum_length-periodic
 EOF
 }
-
 
 variable "custom_rule_languages" {
     default ="nodejs,nodejs,nodejs"
