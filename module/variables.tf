@@ -21,41 +21,49 @@ variable "zip_folder" {
 }
 
 variable "num_custom_rules" {
-  default = 3
+  default = 4
 }
 
 variable "custom_rules" {
     default = <<EOF
-  cloudtrail_enabled_all_regions-periodic,
-  iam_mfa_require_root-periodic,
+  cloudtrail_enabled_all_regions-periodic;
+  iam_mfa_require_root-periodic;
   iam_password_minimum_length-periodic
 EOF
 }
 
 variable "custom_rule_languages" {
-    default ="nodejs,nodejs,nodejs"
+    default = "nodejs;nodejs;nodejs;python2.7"
 }
 
 variable "custom_rule_input_parameters" {
     default = <<EOF
-"";"";{
-     "MinimumPasswordLength": "8"
-  }
+{};{};{
+       "MinimumPasswordLength": "8"
+};{
+  "RDP": "3389",
+  "SSH": "22"
+}
 EOF
 }
 
 variable "custom_rule_message_types" {
   default = <<EOF
-ConfigurationSnapshotDeliveryCompleted,
-ConfigurationSnapshotDeliveryCompleted,
-ConfigurationSnapshotDeliveryCompleted,
+ConfigurationSnapshotDeliveryCompleted;
+ConfigurationSnapshotDeliveryCompleted;
+ConfigurationSnapshotDeliveryCompleted;
 ConfigurationItemChangeNotification
 EOF
 }
 
 variable "custom_rule_scope" {
     default = <<EOF
-{};{};{}
+{};{};{};
+{
+  "ComplianceResourceTypes": [
+      "AWS::EC2::Instance"
+    ]
+}
 EOF
 }
 
