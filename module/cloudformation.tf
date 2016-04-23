@@ -18,7 +18,7 @@ resource "template_file" "aws_config_rules_template" {
   count = "${var.num_custom_rules}"
   template = "${file("${path.module}/AWS Custom Config Rules.template")}"
   vars {
-      config_rule_name = "${replace(element(split(\",\",var.custom_rules), count.index),"/(^[^a-zA-Z]{1,1}|[^-a-zA-Z0-9_]+)/","")}"
+      config_rule_name = "${replace(element(split(\";\",var.custom_rules), count.index),"/(^[^a-zA-Z]{1,1}|[^-a-zA-Z0-9_]+)/","")}"
     	parameters = "${element(split(\";\",var.custom_rule_input_parameters),count.index)}"
       lambda_arn = "${element(aws_lambda_function.config_rules_lambda.*.arn, count.index)}"
       message_type = "${element(replace(split(\";\",var.custom_rule_message_types), "/[\\r\\n]+/",""),count.index)}"
@@ -28,7 +28,7 @@ resource "template_file" "aws_config_rules_template" {
 
 resource "aws_cloudformation_stack" "aws_config_rules" {
   count = "${var.num_custom_rules}"
-  name = "${var.naming_prefix}-rule-${replace(element(split(\",\",var.custom_rules), count.index),"/(^[^a-zA-Z]+|[^-a-zA-Z0-9]+)/","")}"
+  name = "${var.naming_prefix}-rule-${replace(element(split(\";\",var.custom_rules), count.index),"/(^[^a-zA-Z]+|[^-a-zA-Z0-9]+)/","")}"
   template_body = "${element(template_file.aws_config_rules_template.*.rendered, count.index)}"
   depends_on = ["aws_cloudformation_stack.aws_config", "template_file.aws_config_rules_template"]
 }
