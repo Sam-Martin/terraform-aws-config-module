@@ -53,12 +53,15 @@ ec2-exposed-instance
 EOF
 
   custom_rule_input_parameters = <<EOF
-{};{};{
+{};
+{};
+{
        "MinimumPasswordLength": "8"
-};{
-    "RDP": "3389",
-    "SSH": "22"
-  }
+};
+{
+  "RDP": "3389",
+  "SSH": "22"
+}
 EOF
 
   custom_rule_message_types = <<EOF
@@ -69,7 +72,9 @@ ConfigurationItemChangeNotification
 EOF
 
   custom_rule_scope = <<EOF
-{};{};{};
+{};
+{};
+{};
 {
 "ComplianceResourceTypes": [
     "AWS::EC2::Instance"
