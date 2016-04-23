@@ -185,8 +185,7 @@
       "Properties": {
         "Name": "default",
         "S3BucketName": "${delivery_channel_s3_bucket_name}",
-        "S3KeyPrefix": "${delivery_channel_s3_bucket_prefix}",
-        "SnsTopicARN": "${delivery_channel_sns_topic_arn}"
+        "S3KeyPrefix": "${delivery_channel_s3_bucket_prefix}"
       },
       "DependsOn": [
         "ConfigurationRecorderSanitisationResults"
