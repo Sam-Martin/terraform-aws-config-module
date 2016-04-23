@@ -13,15 +13,15 @@ This module uses CloudFormation and Lambda in the back end to control the AWS Co
 
 # Variables  
 
-* `region` AWS region, does not set AWS region itself as the provider will prompt anyway. Used to name roles etc. (**required**)  
+* `region` AWS region, does not set AWS region. Used to name roles etc. (**required**)  
 * `delivery_channel_s3_bucket_name` name of the bucket in which you wish to store your config snapshots (**required**)  
 * `delivery_channel_s3_bucket_prefix` key prefix to be used inside the bucket (defaults to blank)   
 * `num_custom_rules` used to enumerate the custom rules (**required**)  
-* `custom_rules` semicolon separated list of custom rule names (used to infer zipfile name of lambda functions in `zip_folder`) (***required**)  
-* `custom_rule_languages` semicolon separated list of custom rule languages (also used to infer runtime function name) (**required**)
-* `custom_rule_input_parameters` semicolon separated list of custom rule's input parameters (use `{}` for no parameters) (**required**)  
+* `custom_rules` semicolon separated list of custom rule zip file names (**required**)  
+* `custom_rule_languages` semicolon separated list of custom rule languages (affects runtime function) (**required**)
+* `custom_rule_input_parameters` semicolon separated list of rules' parameters (use `{}` for no parameters) (**required**)  
 * `custom_rule_message_types` semicolon separated list of trigger type for each custom rule. Valid values: `ConfigurationSnapshotDeliveryCompleted` and `ConfigurationItemChangeNotification` (**required**)  
-* `custom_rule_scope` semicolon separated list of scopes for each custom rule (see [AWS Config ConfigRule Scope](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configrule-scope.html) for more detail) (**required**)
+* `custom_rule_scope` semicolon separated list of rule scopes (see [AWS Config ConfigRule Scope](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configrule-scope.html)) (**required**)
 * `zip_folder` relative or absolute path to the zips of the custom rule's lambda functions (defaults to `temp/`)  
 
 
