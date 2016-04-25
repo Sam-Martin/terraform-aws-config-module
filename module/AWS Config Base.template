@@ -175,10 +175,7 @@
           "IncludeGlobalResourceTypes": true
         },
         "RoleARN":"${aws_config_role_arn}"
-      },
-      "DependsOn": [
-        "DeliveryChannel"
-      ]
+      }
     },
     "DeliveryChannel": {
       "Type": "AWS::Config::DeliveryChannel",
