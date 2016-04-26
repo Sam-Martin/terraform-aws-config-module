@@ -1,6 +1,7 @@
 resource "aws_iam_role" "iam_for_lambda" {
-      name = "${var.naming_prefix}-lambda-rules-executor-${var.region}"
-    assume_role_policy = <<EOF
+  name = "${var.naming_prefix}-lambda-rules-executor-${var.region}"
+
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -20,6 +21,7 @@ EOF
 resource "aws_iam_role_policy" "iam_role_policy_for_lambda" {
   name = "ReadLogs"
   role = "${aws_iam_role.iam_for_lambda.id}"
+
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -79,15 +81,10 @@ resource "aws_iam_role_policy" "iam_role_policy_for_lambda" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "iam_for_lambda" {
-  name = "lambda_custom_config_rules_executor"
-  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
-  roles = ["${aws_iam_role.iam_for_lambda.name}", "${aws_iam_role.aws_config_role.name}"]
-}
-
 resource "aws_iam_role" "aws_config_role" {
-    name = "${var.naming_prefix}-role-${var.region}"
-    assume_role_policy = <<EOF
+  name = "${var.naming_prefix}-role-${var.region}"
+
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -107,15 +104,57 @@ resource "aws_iam_role" "aws_config_role" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "aws_config_role" {
-  name = "aws_config_role"
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSConfigRole"
-  roles = ["${aws_iam_role.aws_config_role.name}"]
+resource "aws_iam_role_policy" "aws_config_role-1" {
+  name = "AWSConfigRole-ManagedPolicy-Clone"
+  role = "${aws_iam_role.aws_config_role.id}"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudtrail:DescribeTrails",
+        "ec2:Describe*",
+        "config:Put*",
+        "config:Get*",
+        "config:List*",
+        "config:Describe*",
+        "cloudtrail:GetTrailStatus",
+        "s3:GetObject",
+        "iam:GetAccountAuthorizationDetails",
+        "iam:GetAccountSummary",
+        "iam:GetGroup",
+        "iam:GetGroupPolicy",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:GetUser",
+        "iam:GetUserPolicy",
+        "iam:ListAttachedGroupPolicies",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListAttachedUserPolicies",
+        "iam:ListEntitiesForPolicy",
+        "iam:ListGroupPolicies",
+        "iam:ListGroupsForUser",
+        "iam:ListInstanceProfilesForRole",
+        "iam:ListPolicyVersions",
+        "iam:ListRolePolicies",
+        "iam:ListUserPolicies"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
 
 resource "aws_iam_role_policy" "aws_config_role" {
   name = "ReadLogs"
   role = "${aws_iam_role.aws_config_role.id}"
+
   policy = <<EOF
 {
     "Version": "2012-10-17",
