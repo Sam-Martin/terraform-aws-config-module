@@ -75,6 +75,40 @@ resource "aws_iam_role_policy" "iam_role_policy_for_lambda" {
       "Resource": [
        "arn:aws:s3:::${var.delivery_channel_s3_bucket_name}/*"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudtrail:DescribeTrails",
+        "ec2:Describe*",
+        "config:Put*",
+        "config:Get*",
+        "config:List*",
+        "config:Describe*",
+        "cloudtrail:GetTrailStatus",
+        "s3:GetObject",
+        "iam:GetAccountAuthorizationDetails",
+        "iam:GetAccountSummary",
+        "iam:GetGroup",
+        "iam:GetGroupPolicy",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:GetUser",
+        "iam:GetUserPolicy",
+        "iam:ListAttachedGroupPolicies",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListAttachedUserPolicies",
+        "iam:ListEntitiesForPolicy",
+        "iam:ListGroupPolicies",
+        "iam:ListGroupsForUser",
+        "iam:ListInstanceProfilesForRole",
+        "iam:ListPolicyVersions",
+        "iam:ListRolePolicies",
+        "iam:ListUserPolicies"
+      ],
+      "Resource": "*"
     }
   ]
 }
