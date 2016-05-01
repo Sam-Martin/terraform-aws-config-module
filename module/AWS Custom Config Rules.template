@@ -14,7 +14,8 @@
           }]
         },
         "InputParameters":  ${parameters},
-        "Scope": ${scope}
+        "Scope": ${scope},
+        "MaximumExecutionFrequency": "Twelve_Hours"
       }
     }
   }
