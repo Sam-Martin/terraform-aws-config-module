@@ -22,7 +22,7 @@ variable "zip_folder" {
 }
 
 variable "num_custom_rules" {
-  default = 4
+  default = 3
 }
 
 variable "custom_rules" {
