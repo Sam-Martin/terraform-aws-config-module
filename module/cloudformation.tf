@@ -2,9 +2,9 @@ resource "template_file" "aws_config_template" {
   template = "${file("${path.module}/AWS Config Base.template")}"
 
   vars {
-    aws_config_role_arn               = "${aws_iam_role.aws_config_role.arn}"
-    delivery_channel_s3_bucket_name   = "${var.delivery_channel_s3_bucket_name}"
-    delivery_channel_s3_bucket_prefix = "${var.delivery_channel_s3_bucket_prefix}"
+    aws_config_role_arn                 = "${aws_iam_role.aws_config_role.arn}"
+    delivery_channel_s3_bucket_name     = "${var.delivery_channel_s3_bucket_name}"
+    delivery_channel_s3_bucket_prefix   = "${var.delivery_channel_s3_bucket_prefix}"
     delivery_channel_delivery_frequency = "${var.delivery_channel_delivery_frequency}"
   }
 
