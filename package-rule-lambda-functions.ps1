@@ -15,11 +15,11 @@ New-Item $TempRoot -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
 
 # Loop through the custom rules to download and package them
 foreach($CustomRule in $CustomRules){
-    
-    $FileName = Split-Path $CustomRule.uri -Leaf
+
+    $FileName = (Split-Path $CustomRule.uri -Leaf) -replace '\s+',''
     $ZipName = $FileName -replace '\.\w*$',".zip"
 
-    # Cleanup 
+    # Cleanup
     Remove-Item "$TempRoot\$ZipName" -Force -ErrorAction SilentlyContinue
 
     # Download & Zip
