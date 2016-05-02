@@ -180,6 +180,9 @@
     "DeliveryChannel": {
       "Type": "AWS::Config::DeliveryChannel",
       "Properties": {
+        "ConfigSnapshotDeliveryProperties": {
+          "DeliveryFrequency": "${delivery_channel_delivery_frequency}"
+        },
         "Name": "default",
         "S3BucketName": "${delivery_channel_s3_bucket_name}",
         "S3KeyPrefix": "${delivery_channel_s3_bucket_prefix}"

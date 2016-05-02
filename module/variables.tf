@@ -78,3 +78,8 @@ variable "delivery_channel_s3_bucket_prefix" {
   default     = ""
   description = "The prefix to prepend to the key of all logs in the delivery channel's s3 bucket (no leading or trailing slashes required)"
 }
+
+variable "delivery_channel_delivery_frequency" {
+  type    = "string"
+  default = "TwentyFour_Hours"
+}
