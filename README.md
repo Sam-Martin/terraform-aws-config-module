@@ -16,7 +16,7 @@ This module uses CloudFormation and Lambda in the back end to control the AWS Co
 * `region` AWS region, does not set AWS region. Used to name roles etc. (**required**)  
 * `delivery_channel_s3_bucket_name` name of the bucket in which you wish to store your config snapshots (**required**)  
 * `delivery_channel_s3_bucket_prefix` key prefix to be used inside the bucket (defaults to blank)   
-* 'delivery_channel_delivery_frequency' frequency to evaluate periodic config rules (defaults to 'TwentyFour_Hours')
+* `delivery_channel_delivery_frequency` frequency to evaluate periodic config rules (defaults to `TwentyFour_Hours`)
 * `num_custom_rules` used to enumerate the custom rules (**required**)  
 * `custom_rules` semicolon separated list of custom rule zip file names (**required**)  
 * `custom_rule_languages` semicolon separated list of custom rule languages (affects runtime function) (**required**)
