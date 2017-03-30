@@ -1,4 +1,11 @@
 # aws-config-custom-rules-terraform
+
+# Deprecated
+A recent release of Terraform means you can control your AWS Config configuration through Terraform directly.  
+Please see [the documentation for details](https://www.terraform.io/docs/providers/aws/r/config_config_rule.html).
+
+
+# Description
 This Terraform module allows you to automatically setup custom AWS Config rules.  
 This module uses CloudFormation and Lambda in the back end to control the AWS Config components, due to a lack of support for AWS Config in Terraform at the time of writing.  
 
